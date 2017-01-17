@@ -8,10 +8,24 @@
 # By considering the terms in the Fibonacci sequence whose values do not exceed four million,
 # find the sum of the even-valued terms.
 
+function fib(n)
+    back2 = 0
+    back1 = 1
+    next = 0
 
-# Could use memoization here to reduce redundancy,
-# but Julia's so fast that its not worth the effort.
-fib(n) = n < 2 ? 1 : fib(n-1) + fib(n-2)
+    if n == 0
+        return 0
+    end
+
+    for i in 2:n-1
+        next = back2 + back1
+        back2 = back1
+        back1 = next
+    end
+
+    return back1+back2
+end
+
 
 result = 0
 
