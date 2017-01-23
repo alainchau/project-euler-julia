@@ -21,10 +21,9 @@ function main()
     result = BigInt(0)
 
     for perm in perms
-        str = join(perm)
+        if (perm[4] in "02468") && (sum(perm[3:5]) % 3 == 0) && (perm[6] in "05") && (perm[5]*100 + perm[6]*10 + perm[7]) % 7 == 0 && (perm[6] - perm[7] + perm[8]) % 11 == 0 && (4*perm[9]+(perm[7]*10+perm[8])) % 13 == 0 && ((perm[8]*10+perm[9])-5*perm[10]) % 17 == 0
 
-        if (str[4] in "02468") && parse(str[3:5]) % 3 == 0 && (str[6] in "05") && parse(str[5:7]) % 7 == 0 && parse(str[6:8]) % 11 == 0 && parse(str[7:9]) % 13 == 0 && parse(str[8:10]) % 17 == 0
-            result += parse(BigInt, str)
+            result += parse(BigInt, parse(join(perm)))
         end
 
     end
